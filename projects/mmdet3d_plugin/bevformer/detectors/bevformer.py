@@ -218,7 +218,7 @@ class BEVFormer(MVXTwoStageDetector):
         prev_img = img[:, :-1, ...] #(B,3,K) 其中k表示(n(环视图像数量，c,H,w)) 
         img = img[:, -1, ...] # (B,K)
 
-        prev_img_metas = copy.deepcopy(img_metas)
+        prev_img_metas = copy.deepcopy(img_metas) # img_metas表示图像之间投影矩阵等信息
         prev_bev = self.obtain_history_bev(prev_img, prev_img_metas)
 
         img_metas = [each[len_queue-1] for each in img_metas]
